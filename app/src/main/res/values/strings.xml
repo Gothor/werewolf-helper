@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Les loups-garous de Thiercelieux</string>
-    <string name="app_name_first_part">Les loups-garous</string>
-    <string name="app_name_second_part">de Thiercelieux</string>
     <string name="click_to_start">Cliquez pour démarrer une nouvelle partie</string>
 
     <string name="title_activity_players">PlayersActivity</string>
