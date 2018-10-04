@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:contentDescription="Fond d'écran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="left"
+        android:scaleType="fitStart"
+        android:src="@drawable/background_picture" />
+
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cartes en jeu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Werewolves -->
+
+    <TextView
+        android:id="@+id/werewolves"
+        style="@style/Title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loups-garous"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <ImageView
+        android:id="@+id/werewolves_picture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+
+    <TextView
+        android:id="@+id/werewolves_nb"
+        style="@style/BigNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
+        app:layout_constraintLeft_toRightOf="@id/werewolves_picture"
+        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+
+
+    <Button
+        android:id="@+id/werewolves_minus"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/button"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
+        app:layout_constraintLeft_toRightOf="@id/werewolves_nb"
+        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+
+    <Button
+        android:id="@+id/werewolves_plus"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button"
+        android:src="@mipmap/ic_launcher"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
+        app:layout_constraintLeft_toRightOf="@id/werewolves_minus"
+        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+
+    <!-- Clairvoyant -->
+
+    <TextView
+        android:id="@+id/clairvoyant"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Voyante"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/werewolves_picture" />
+
+    <ImageView
+        android:id="@+id/clairvoyant_picture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clairvoyant" />
+
+    <CheckBox
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/clairvoyant_picture"
+        app:layout_constraintLeft_toRightOf="@id/clairvoyant_picture"/>
+
+    <!-- Little girl -->
+
+    <TextView
+        android:id="@+id/little_girl"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Petite fille"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clairvoyant_picture" />
+
+    <ImageView
+        android:id="@+id/little_girl_picture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/little_girl" />
+
+    <CheckBox
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/little_girl_picture"
+        app:layout_constraintLeft_toRightOf="@id/little_girl_picture"/>
+
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/button"
+        android:text="Démarrer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -25,7 +25,6 @@ public class PlayersActivity extends AppCompatActivity {
     }
 
     protected void onStartButtonClick() {
-        Intent intent = new Intent(PlayersActivity.this, ConfigurationActivity.class);
-        startActivity(intent);
+
     }
 }
