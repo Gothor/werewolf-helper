@@ -104,6 +104,9 @@
     <CheckBox
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/checkbox"
+        android:button="@null"
         app:layout_constraintBottom_toBottomOf="@id/clairvoyant_picture"
         app:layout_constraintLeft_toRightOf="@id/clairvoyant_picture"
         app:layout_constraintTop_toTopOf="@+id/clairvoyant_picture" />
@@ -132,6 +135,9 @@
     <CheckBox
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/checkbox"
+        android:button="@null"
         app:layout_constraintBottom_toBottomOf="@id/little_girl_picture"
         app:layout_constraintLeft_toRightOf="@id/little_girl_picture"
         app:layout_constraintTop_toTopOf="@+id/little_girl_picture" />
