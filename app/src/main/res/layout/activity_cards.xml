@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:padding="10dp">
 
     <ImageView
-        android:contentDescription="Fond d'écran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="Fond d'écran"
         android:foregroundGravity="left"
         android:scaleType="fitStart"
         android:src="@drawable/background_picture" />
@@ -50,21 +51,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2"
-        app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
-        app:layout_constraintLeft_toRightOf="@id/werewolves_picture"
-        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+        app:layout_constraintBottom_toBottomOf="@+id/werewolves_picture"
+        app:layout_constraintEnd_toStartOf="@+id/werewolves_minus"
+        app:layout_constraintStart_toEndOf="@+id/werewolves_picture"
+        app:layout_constraintTop_toTopOf="@+id/werewolves_picture" />
 
 
     <Button
         android:id="@+id/werewolves_minus"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/button"
         android:text="-"
-        app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
-        app:layout_constraintLeft_toRightOf="@id/werewolves_nb"
-        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+        app:layout_constraintBottom_toBottomOf="@+id/werewolves_picture"
+        app:layout_constraintEnd_toStartOf="@+id/werewolves_plus"
+        app:layout_constraintTop_toTopOf="@+id/werewolves_picture" />
 
     <Button
         android:id="@+id/werewolves_plus"
@@ -74,8 +77,8 @@
         android:src="@mipmap/ic_launcher"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
-        app:layout_constraintLeft_toRightOf="@id/werewolves_minus"
-        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/werewolves_picture" />
 
     <!-- Clairvoyant -->
 
@@ -102,7 +105,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@id/clairvoyant_picture"
-        app:layout_constraintLeft_toRightOf="@id/clairvoyant_picture"/>
+        app:layout_constraintLeft_toRightOf="@id/clairvoyant_picture"
+        app:layout_constraintTop_toTopOf="@+id/clairvoyant_picture" />
 
     <!-- Little girl -->
 
@@ -129,7 +133,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@id/little_girl_picture"
-        app:layout_constraintLeft_toRightOf="@id/little_girl_picture"/>
+        app:layout_constraintLeft_toRightOf="@id/little_girl_picture"
+        app:layout_constraintTop_toTopOf="@+id/little_girl_picture" />
 
 
     <Button

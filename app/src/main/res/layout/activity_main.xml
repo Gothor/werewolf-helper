@@ -31,9 +31,9 @@
         android:id="@+id/bt_cards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cartes"
         android:layout_margin="10dp"
         android:background="@drawable/button"
+        android:text="Cartes"
         app:layout_constraintBottom_toTopOf="@id/bt_players"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -42,9 +42,9 @@
         android:id="@+id/bt_players"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Joueurs"
         android:layout_margin="10dp"
         android:background="@drawable/button"
+        android:text="Joueurs"
         app:layout_constraintBottom_toTopOf="@id/bt_play"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -53,9 +53,9 @@
         android:id="@+id/bt_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Partie"
         android:layout_margin="10dp"
         android:background="@drawable/button"
+        android:text="Partie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

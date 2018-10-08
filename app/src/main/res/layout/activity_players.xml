@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:padding="10dp">
 
     <ImageView
         android:layout_width="match_parent"
@@ -11,64 +12,64 @@
         android:scaleType="fitStart"
         android:src="@drawable/background_picture" />
 
-            <TextView
-            android:id="@+id/title"
-            style="@style/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sélection des joueurs"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/title"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sélection des joueurs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/createButton"
-            app:layout_constraintTop_toBottomOf="@id/title">
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/my_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical" />
+    </ScrollView>
 
-        </ScrollView>
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button"
+        android:text="Créer"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/importButton" />
 
-        <Button
-            android:id="@+id/createButton"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button"
-            android:text="Créer"
-            app:layout_constraintBottom_toTopOf="@+id/startButton"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/importButton" />
+    <Button
+        android:id="@+id/importButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button"
+        android:text="Importer"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintLeft_toRightOf="@id/createButton"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <Button
-            android:id="@+id/importButton"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button"
-            android:text="Importer"
-            app:layout_constraintBottom_toTopOf="@+id/startButton"
-            app:layout_constraintLeft_toRightOf="@id/createButton"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/button"
-            android:text="Démarrer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/button"
+        android:text="Démarrer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
