@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">Les loups-garous de Thiercelieux</string>
     <string name="click_to_start">Cliquez pour démarrer une nouvelle partie</string>
+    <string name="bt_cards">Cartes</string>
+    <string name="bt_players">Joueurs</string>
+    <string name="bt_play">Partie</string>
+
+    <string name="players_selection_title">Sélection des joueurs</string>
 
     <string name="title_activity_players">PlayersActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="bt_next_turn">Tour suivant</string>
+
+    <!--<string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>-->
 </resources>
