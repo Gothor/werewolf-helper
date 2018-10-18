@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background"
     android:padding="10dp">
 
@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitStart"
         android:src="@drawable/background_picture"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title"
@@ -29,9 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/createButton"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        android:fillViewport="true">
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/my_recycler_view"

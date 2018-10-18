@@ -14,7 +14,6 @@
         android:scaleType="fitStart"
         android:src="@drawable/background_picture" />
 
-
     <TextView
         android:id="@+id/title"
         style="@style/Title"
