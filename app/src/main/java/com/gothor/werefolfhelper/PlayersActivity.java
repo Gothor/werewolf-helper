@@ -1,7 +1,5 @@
 package com.gothor.werefolfhelper;
 
-import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +33,7 @@ public class PlayersActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new PlayerAdapter(game.getPlayers(), recyclerView);
+        RecyclerView.Adapter adapter = new PlayerAdapter(game.getPlayers(), PlayerAdapter.NAME_VIEW);
         recyclerView.setAdapter(adapter);
     }
 
