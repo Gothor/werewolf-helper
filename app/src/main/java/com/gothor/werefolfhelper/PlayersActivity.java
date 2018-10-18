@@ -35,7 +35,7 @@ public class PlayersActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new PlayerAdapter(game.getPlayers(), PlayerAdapter.NAME_VIEW);
+        RecyclerView.Adapter adapter = new PlayerAdapter(game.players, PlayerAdapter.NAME_VIEW);
         recyclerView.setAdapter(adapter);
 
         createButton.setOnClickListener(new View.OnClickListener() {
