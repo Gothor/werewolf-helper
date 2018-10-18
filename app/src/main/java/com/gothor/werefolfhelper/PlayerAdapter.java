@@ -20,7 +20,6 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        int position;
         TextView textView;
 
         public ViewHolder(final ConstraintLayout layout) {
@@ -28,9 +27,10 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
             layout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
                     players.remove(position);
                     notifyItemRemoved(position);
-                    // notifyItemRangeChanged(position, players.size());
+
                     return false;
                 }
             });
@@ -53,7 +53,6 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textView.setText(players.get(position).name);
-        holder.position = position;
     }
 
     @Override
