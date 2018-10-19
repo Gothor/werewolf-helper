@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background_werewolf"
     android:padding="10dp">
 
     <TextView
@@ -17,22 +17,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_players"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
-        android:fillViewport="true"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bt_create"
-        app:layout_constraintTop_toBottomOf="@id/title">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical" />
-
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <Button
         android:id="@+id/bt_create"
