@@ -3,6 +3,6 @@
 xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:drawable="@color/background_end"/>
     <item>
-        <bitmap android:src="@mipmap/background_picture" />
+        <bitmap android:src="@drawable/background_picture" />
     </item>
 </layer-list>

@@ -32,7 +32,7 @@
         android:id="@+id/werewolves_picture"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/role_werewolf"
+        android:src="@drawable/role_werewolf"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/werewolves" />
 
@@ -88,7 +88,7 @@
         android:id="@+id/clairvoyant_picture"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/role_clairvoyant"
+        android:src="@drawable/role_clairvoyant"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/clairvoyant" />
 
@@ -120,7 +120,7 @@
         android:id="@+id/little_girl_picture"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/role_little_girl"
+        android:src="@drawable/role_little_girl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/little_girl" />
 
