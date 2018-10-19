@@ -16,13 +16,13 @@ public class Game {
 
     private transient Context context;
 
-    private int nbDays;
+    public int nbDays;
 
-    private int nbWerewolves;
-    private boolean clairvoyantEnabled;
-    private boolean littleGirlEnabled;
+    public int nbWerewolves;
+    public boolean clairvoyantEnabled;
+    public boolean littleGirlEnabled;
 
-    private ArrayList<Player> players = new ArrayList<>();
+    public ArrayList<Player> players = new ArrayList<>();
 
     public Game() { }
 
@@ -62,10 +62,6 @@ public class Game {
         e.putString("config", config);
 
         e.commit();
-    }
-
-    public ArrayList<Player> getPlayers() {
-        return players;
     }
 
     public enum Role {

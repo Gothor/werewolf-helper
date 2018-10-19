@@ -1,59 +1,53 @@
 package com.gothor.werefolfhelper;
 
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
+class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder> {
 
-    private RecyclerView rv;
+    public static final int NAME_VIEW = 0;
+    public static final int IN_GAME_VIEW = 1;
+
+    private int viewType;
+
     private ArrayList<Player> players;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        int position;
-        TextView textView;
-
-        public ViewHolder(final ConstraintLayout layout) {
-            super(layout);
-            layout.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    players.remove(position);
-                    notifyItemRemoved(position);
-                    // notifyItemRangeChanged(position, players.size());
-                    return false;
-                }
-            });
-            textView = layout.findViewById(R.id.playerNameTextView);
-        }
-    }
-
-    public PlayerAdapter(ArrayList<Player> players, RecyclerView rv) {
+    public PlayerAdapter(ArrayList<Player> players, int viewType) {
         this.players = players;
-        this.rv = rv;
+        this.viewType = viewType;
     }
 
     @Override
-    public PlayerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ConstraintLayout layout = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_player, parent, false);
-        ViewHolder viewHolder = new ViewHolder(layout);
+    public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        PlayerViewHolder viewHolder;
+        View layout;
+        switch (viewType) {
+            case IN_GAME_VIEW:
+                layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_player_in_game, parent, false);
+                viewHolder = new PlayerViewHolderInGame(layout);
+                break;
+            case NAME_VIEW:
+            default:
+                layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_player_name, parent, false);
+                viewHolder = new PlayerViewHolderName(layout);
+        }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(players.get(position).name);
-        holder.position = position;
+    public void onBindViewHolder(PlayerViewHolder holder, int position) {
+        Player player = players.get(position);
+        holder.setPlayer(player);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return this.viewType;
     }
 
     @Override
@@ -61,7 +55,64 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
         return players.size();
     }
 
-    public ArrayList<Player> getPlayers() {
-        return this.players;
+    /* Abstract ViewHolder */
+    public abstract class PlayerViewHolder extends RecyclerView.ViewHolder {
+
+        protected Player player;
+
+        public PlayerViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        public void setPlayer(Player player) {
+            this.player = player;
+            onSetPlayer();
+        }
+
+        public abstract void onSetPlayer();
     }
+
+    /* View Holder showing only the name */
+    public class PlayerViewHolderName extends PlayerViewHolder {
+
+        private TextView tv_name;
+
+        public PlayerViewHolderName(final View layout) {
+            super(layout);
+            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+                    players.remove(position);
+                    notifyItemRemoved(position);
+
+                    return false;
+                }
+            });
+            tv_name = layout.findViewById(R.id.playerNameTextView);
+        }
+
+        @Override
+        public void onSetPlayer() {
+            tv_name.setText(player.name);
+        }
+    }
+
+    /* ViewHolder used in game */
+    public class PlayerViewHolderInGame extends PlayerViewHolder {
+
+        private TextView tv_name;
+
+        public PlayerViewHolderInGame(final View layout) {
+            super(layout);
+
+            tv_name = layout.findViewById(R.id.playerNameTextView);
+        }
+
+        @Override
+        public void onSetPlayer() {
+            tv_name.setText(player.name);
+        }
+    }
+
 }

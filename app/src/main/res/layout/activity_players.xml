@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_werewolf"
+    android:background="@drawable/background"
     android:padding="10dp">
 
     <TextView
@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/bt_create"
         app:layout_constraintTop_toBottomOf="@id/title">
 
         <android.support.v7.widget.RecyclerView
@@ -34,35 +35,35 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/createButton"
+        android:id="@+id/bt_create"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button"
         android:text="Créer"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintBottom_toTopOf="@+id/bt_start"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/importButton" />
+        app:layout_constraintRight_toLeftOf="@+id/bt_import" />
 
     <Button
-        android:id="@+id/importButton"
+        android:id="@+id/bt_import"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button"
         android:text="Importer"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintLeft_toRightOf="@id/createButton"
+        app:layout_constraintBottom_toTopOf="@+id/bt_start"
+        app:layout_constraintLeft_toRightOf="@id/bt_create"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/bt_start"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/button"
-        android:text="Démarrer"
+        android:text="Valider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
