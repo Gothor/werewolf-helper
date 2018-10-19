@@ -1,6 +1,14 @@
 package com.gothor.werefolfhelper;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +19,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class PlayersActivity extends AppCompatActivity {
 
     private Game game;
+
+    PlayerAdapter adapter;
 
     private RecyclerView recyclerView;
     private Button createButton;
@@ -28,14 +40,14 @@ public class PlayersActivity extends AppCompatActivity {
 
         game = Game.getGame(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.list_players);
         createButton = (Button) findViewById(R.id.bt_create);
         importButton = (Button) findViewById(R.id.bt_import);
         submitButton = (Button) findViewById(R.id.bt_start);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new PlayerAdapter(game.players, PlayerAdapter.NAME_VIEW);
+        adapter = new PlayerAdapter(this, game.players, PlayerAdapter.NAME_VIEW);
         recyclerView.setAdapter(adapter);
 
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +96,49 @@ public class PlayersActivity extends AppCompatActivity {
     }
 
     private void onImportButtonClick() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_CONTACTS},
+                    Constants.MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        } else {
+            Intent intent = new Intent(this, ContactListActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(this, ContactListActivity.class);
+                    startActivityForResult(intent, 0);
+                }
+            }
+        }
     }
 
     protected void onSubmitButtonClick() {
-        onBackPressed();
         game.save();
+        onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 0: {
+                if (resultCode == Activity.RESULT_OK) {
+                    int originalSize = game.players.size();
+                    ArrayList<String> contactNames = data.getStringArrayListExtra("contacts");
+
+                    for (String name: contactNames) {
+                        game.addPlayer(new Player(name));
+                    }
+
+                    adapter.notifyItemRangeInserted(originalSize, game.players.size() - originalSize);
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,9 @@
 package com.gothor.werefolfhelper;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +17,12 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
     public static final int NAME_VIEW = 0;
     public static final int IN_GAME_VIEW = 1;
 
+    private Context context;
+    private ArrayList<Player> players;
     private int viewType;
 
-    private ArrayList<Player> players;
-
-    public PlayerAdapter(ArrayList<Player> players, int viewType) {
+    public PlayerAdapter(Context context, ArrayList<Player> players, int viewType) {
+        this.context = context;
         this.players = players;
         this.viewType = viewType;
     }
@@ -82,9 +87,26 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
             layout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    int position = getAdapterPosition();
-                    players.remove(position);
-                    notifyItemRemoved(position);
+                    final int position = getAdapterPosition();
+                    Player player = players.get(position);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Retirer " + player.name + " de la partie ?")
+                            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    players.remove(position);
+                                    notifyItemRemoved(position);
+                                }
+                            })
+                            .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                    Dialog dialog = builder.create();
+                    dialog.show();
 
                     return false;
                 }
