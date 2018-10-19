@@ -30,9 +30,9 @@
 
     <ImageView
         android:id="@+id/werewolves_picture"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/role_werewolf"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/werewolves" />
 
@@ -50,8 +50,8 @@
 
     <Button
         android:id="@+id/werewolves_minus"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/button"
@@ -62,8 +62,8 @@
 
     <Button
         android:id="@+id/werewolves_plus"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@drawable/button"
         android:src="@mipmap/ic_launcher"
         android:text="+"
@@ -86,16 +86,16 @@
 
     <ImageView
         android:id="@+id/clairvoyant_picture"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/role_clairvoyant"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/clairvoyant" />
 
     <CheckBox
         android:id="@+id/clairvoyant_enabled"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/checkbox"
         android:button="@null"
@@ -118,16 +118,16 @@
 
     <ImageView
         android:id="@+id/little_girl_picture"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/role_little_girl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/little_girl" />
 
     <CheckBox
         android:id="@+id/little_girl_enabled"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/checkbox"
         android:button="@null"

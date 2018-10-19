@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background_werewolf"
     android:padding="10dp">
 
     <TextView
@@ -13,12 +13,11 @@
         android:layout_height="120dp"
         android:text="Description du tour courant" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
-        android:layout_marginBottom="80dp"></ListView>
-
+        android:layout_marginBottom="80dp" />
 
     <Button
         android:id="@+id/bt_next_turn"
