@@ -69,15 +69,17 @@ public class CardsActivity extends AppCompatActivity {
     }
 
     private void onWerewolvesMinusButtonClick() {
-        if (nbWerewolves > 1) {
+        if (nbWerewolves > 2) {
             nbWerewolves--;
+            werewolvesNumberText.setText(nbWerewolves + "");
         }
-        werewolvesNumberText.setText(nbWerewolves + "");
     }
 
     private void onWerewolvesPlusButtonClick() {
-        nbWerewolves++;
-        werewolvesNumberText.setText(nbWerewolves + "");
+        if (nbWerewolves < 4) {
+            nbWerewolves++;
+            werewolvesNumberText.setText(nbWerewolves + "");
+        }
     }
 
     private void onSubmitButtonClick() {

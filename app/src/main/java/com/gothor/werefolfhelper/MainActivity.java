@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 /* A FAIRE : tester si nb cartes et nb joueurs sont compatibles
                 avant de lancer le jeu */
+                Game game = Game.getGame(MainActivity.this);
+
+                if (game.players.size() < 8) {
+                    Toast.makeText(MainActivity.this, "Il faut au moins 8 joueurs.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (game.players.size() > 18) {
+                    Toast.makeText(MainActivity.this, "Il faut au plus 18 joueurs.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Intent intent = new Intent(MainActivity.this, PlayActivity.class);
                 startActivity(intent);
             }

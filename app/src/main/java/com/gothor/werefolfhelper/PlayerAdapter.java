@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -124,16 +126,47 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
     public class PlayerViewHolderInGame extends PlayerViewHolder {
 
         private TextView tv_name;
+        private TextView tv_role;
+        private TextView tv_status;
 
         public PlayerViewHolderInGame(final View layout) {
             super(layout);
 
             tv_name = layout.findViewById(R.id.playerNameTextView);
+            tv_role = layout.findViewById(R.id.playerRoleTextView);
+            tv_status = layout.findViewById(R.id.playerStatusTextView);
+
+            tv_role.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Nouveau rôle ?")
+                            .setItems(Game.getGame(context).getAvailableRoles(), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    player.role = Game.Role.values()[i];
+                                    notifyDataSetChanged();
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+
+            tv_status.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    player.alive = !player.alive;
+                    notifyDataSetChanged();
+                }
+            });
         }
 
         @Override
         public void onSetPlayer() {
             tv_name.setText(player.name);
+            tv_role.setText(player.role.toString().toLowerCase());
+            tv_status.setText(player.alive ? "Vivant" : "Mort");
         }
     }
 

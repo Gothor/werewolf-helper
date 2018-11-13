@@ -13,6 +13,8 @@
     <string name="app_name_second_part">de Thiercelieux</string>
     <string name="app_name_first_part">Les loups-garous</string>
 
+    <string name="role_villager">Villageois</string>
+
     <!--<string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>-->
 </resources>
