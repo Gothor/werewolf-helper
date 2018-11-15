@@ -11,7 +11,7 @@
         style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cartes en jeu"
+        android:text="@string/cards_selection_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         style="@style/Title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loups-garous"
+        android:text="@string/role_werewolf"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
@@ -34,14 +34,15 @@
         android:layout_height="40dp"
         android:src="@drawable/role_werewolf"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/werewolves" />
+        app:layout_constraintTop_toBottomOf="@id/werewolves"
+        android:contentDescription="@string/werewolf_logo" />
 
     <TextView
         android:id="@+id/werewolves_nb"
         style="@style/BigNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2"
+        android:text="@string/example_number"
         app:layout_constraintBottom_toBottomOf="@+id/werewolves_picture"
         app:layout_constraintEnd_toStartOf="@+id/werewolves_minus"
         app:layout_constraintStart_toEndOf="@+id/werewolves_picture"
@@ -55,7 +56,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/button"
-        android:text="-"
+        android:text="@string/bt_minus"
         app:layout_constraintBottom_toBottomOf="@+id/werewolves_picture"
         app:layout_constraintEnd_toStartOf="@+id/werewolves_plus"
         app:layout_constraintTop_toTopOf="@+id/werewolves_picture" />
@@ -66,7 +67,7 @@
         android:layout_height="40dp"
         android:background="@drawable/button"
         android:src="@mipmap/wh_launcher"
-        android:text="+"
+        android:text="@string/bt_plus"
         app:layout_constraintBottom_toBottomOf="@id/werewolves_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/werewolves_picture" />
@@ -79,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Voyante"
+        android:text="@string/role_clairvoyant"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/werewolves_picture" />
@@ -90,12 +91,14 @@
         android:layout_height="40dp"
         android:src="@drawable/role_clairvoyant"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clairvoyant" />
+        app:layout_constraintTop_toBottomOf="@id/clairvoyant"
+        android:contentDescription="@string/clairvoyant_logo" />
 
     <CheckBox
         android:id="@+id/clairvoyant_enabled"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/checkbox"
         android:button="@null"
@@ -111,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Petite fille"
+        android:text="@string/role_little_girl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/clairvoyant_picture" />
@@ -122,12 +125,14 @@
         android:layout_height="40dp"
         android:src="@drawable/role_little_girl"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/little_girl" />
+        app:layout_constraintTop_toBottomOf="@id/little_girl"
+        android:contentDescription="@string/little_girl_logo" />
 
     <CheckBox
         android:id="@+id/little_girl_enabled"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/checkbox"
         android:button="@null"
@@ -141,7 +146,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/button"
-        android:text="Valider"
+        android:text="@string/bt_done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

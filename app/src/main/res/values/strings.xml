@@ -1,20 +1,27 @@
 <resources>
+    <!--Titles-->
     <string name="app_name">Les loups-garous de Thiercelieux</string>
-    <string name="click_to_start">Cliquez pour démarrer une nouvelle partie</string>
+    <string name="app_name_second_part">de Thiercelieux</string>
+    <string name="app_name_first_part">Les loups-garous</string>
+
+    <string name="players_selection_title">Sélection des joueurs</string>
+    <string name="cards_selection_title">Cartes en jeu</string>
+
+    <!--Buttons-->
     <string name="bt_cards">Cartes</string>
     <string name="bt_players">Joueurs</string>
     <string name="bt_play">Partie</string>
     <string name="bt_next_turn">Tour suivant</string>
+    <string name="bt_done">Valider</string>
+    <string name="bt_plus">+</string>
+    <string name="bt_minus">-</string>
 
-    <string name="players_selection_title">Sélection des joueurs</string>
+    <!--Images descriptions-->
+    <string name="werewolf_logo">Logo du loup-garou</string>
+    <string name="clairvoyant_logo">Logo de la voyante</string>
+    <string name="little_girl_logo">Logo de la petite fille</string>
 
-    <string name="title_activity_players">PlayersActivity</string>
-
-
-    <string name="app_name_second_part">de Thiercelieux</string>
-    <string name="app_name_first_part">Les loups-garous</string>
-
-    <string name="role_villager">Villageois</string>
+    <!--Game turns descriptions-->
     <string name="werewolves_turn_description">Le village s\'endort.
         \nLes loups-garous se réveillent
         \n(Ils désignent leur victime).
@@ -25,4 +32,16 @@
         \n(Nommer la victime s\'il y en a une).
         \nLes villageois choisissent une victime.
         \nLes villageois se rendorment.</string>
+
+    <!--Roles descriptions-->
+    <string name="role_villager">Villageois</string>
+    <string name="role_werewolf">Loup-garou</string>
+    <string name="role_clairvoyant">Voyante</string>
+    <string name="role_little_girl">Petite fille</string>
+
+    <!--Text examples in layout files-->
+    <string name="example_number">2</string>
+    <string name="example_name">Name</string>
+
+
 </resources>
