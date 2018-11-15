@@ -7,6 +7,7 @@
     <string name="players_selection_title">Sélection des joueurs</string>
     <string name="cards_selection_title">Cartes en jeu</string>
     <string name="contacts_import_title">Importer des contacts</string>
+    <string name="new_player_title">Nouveau joueur</string>
 
     <!--Buttons-->
     <string name="bt_cards">Cartes</string>
@@ -44,7 +45,7 @@
 
     <!--Text examples in layout files-->
     <string name="example_number">2</string>
-    <string name="example_name">Name</string>
+    <string name="example_name">Nom</string>
 
 
 </resources>

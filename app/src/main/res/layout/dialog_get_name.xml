@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,13 +9,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nouveau joueur"
-        android:textSize="20dp" />
+        android:text="@string/new_player_title"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nom" />
+        android:hint="@string/example_name"
+        android:inputType="textPersonName"
+        tools:ignore="Autofill" />
 
 </LinearLayout>
