@@ -72,17 +72,17 @@ public class PlayActivity extends AppCompatActivity {
     public void werewolf() {
         game.step = Game.Step.WEREWOLF;
         game.nbDays++;
-        textView.setText("Loups garous");
+        textView.setText(getString(R.string.werewolves_turn_description));
     }
 
     public void clairvoyant() {
         game.step = Game.Step.CLAIRVOYANT;
-        textView.setText("Voyante");
+        textView.setText(getString(R.string.clairvoyant_turn_description));
     }
 
     public void villageois() {
         game.step = Game.Step.DAY;
-        textView.setText("Villageois");
+        textView.setText(getString(R.string.villagers_turn_description));
     }
 
     public void endGame(int result) {

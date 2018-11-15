@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_werewolf"
@@ -11,7 +10,8 @@
         android:id="@+id/turn_description"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:text="Description du tour courant" />
+        style="@style/DefaultFont"
+        android:text="@string/werewolves_turn_description" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_players"
