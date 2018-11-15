@@ -16,7 +16,8 @@
     <string name="bt_done">Valider</string>
     <string name="bt_plus">+</string>
     <string name="bt_minus">-</string>
-    <string name="bt_import">-</string>
+    <string name="bt_import">Importer</string>
+    <string name="bt_create">Créer</string>
 
     <!--Images descriptions-->
     <string name="werewolf_logo">Logo du loup-garou</string>
