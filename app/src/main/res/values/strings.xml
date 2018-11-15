@@ -6,6 +6,7 @@
 
     <string name="players_selection_title">Sélection des joueurs</string>
     <string name="cards_selection_title">Cartes en jeu</string>
+    <string name="contacts_import_title">Importer des contacts</string>
 
     <!--Buttons-->
     <string name="bt_cards">Cartes</string>
@@ -15,6 +16,7 @@
     <string name="bt_done">Valider</string>
     <string name="bt_plus">+</string>
     <string name="bt_minus">-</string>
+    <string name="bt_import">-</string>
 
     <!--Images descriptions-->
     <string name="werewolf_logo">Logo du loup-garou</string>

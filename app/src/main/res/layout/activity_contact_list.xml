@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Importer des contacts" />
+        android:text="@string/contacts_import_title" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_contact"
@@ -26,6 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Importer" />
+        android:text="@string/bt_import" />
 
 </LinearLayout>
