@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +78,10 @@ public class PlayersActivity extends AppCompatActivity {
 
         final EditText nameEditText = layout.findViewById(R.id.nameEditText);
 
+        InputFilter[] FilterArray = new InputFilter[1];
+        FilterArray[0] = new InputFilter.LengthFilter(getResources().getInteger(R.integer.name_max_length));
+        nameEditText.setFilters(FilterArray);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(layout)
                 .setPositiveButton("Ajouter", new DialogInterface.OnClickListener() {
@@ -133,6 +139,12 @@ public class PlayersActivity extends AppCompatActivity {
                     ArrayList<String> contactNames = data.getStringArrayListExtra("contacts");
 
                     for (String name: contactNames) {
+                        int limit = getResources().getInteger(R.integer.name_max_length);
+                        name = name.trim();
+                        if (name.length() > limit) {
+                            name = name.substring(0, limit);
+                            name = name.trim();
+                        }
                         game.addPlayer(new Player(name));
                     }
 
