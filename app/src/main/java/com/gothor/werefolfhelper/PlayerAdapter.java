@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -127,14 +128,14 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
 
         private TextView tv_name;
         private TextView tv_role;
-        private TextView tv_status;
+        private ImageView iv_status;
 
         public PlayerViewHolderInGame(final View layout) {
             super(layout);
 
             tv_name = layout.findViewById(R.id.playerNameTextView);
             tv_role = layout.findViewById(R.id.playerRoleTextView);
-            tv_status = layout.findViewById(R.id.playerStatusTextView);
+            iv_status = layout.findViewById(R.id.playerStatusTextView);
 
             tv_role.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -153,7 +154,7 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
                 }
             });
 
-            tv_status.setOnClickListener(new View.OnClickListener() {
+            iv_status.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     player.alive = !player.alive;
@@ -166,7 +167,7 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
         public void onSetPlayer() {
             tv_name.setText(player.name);
             tv_role.setText(player.role.toString().toLowerCase());
-            tv_status.setText(player.alive ? "Vivant" : "Mort");
+            iv_status.setImageResource(player.alive ? R.drawable.alive : R.drawable.dead);
         }
     }
 
