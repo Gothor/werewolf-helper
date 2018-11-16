@@ -47,9 +47,7 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int result = game.isOver();
-                Log.d("werewolf_helper", game.players.toString());
                 game.sortPlayers();
-                Log.d("werewolf_helper", game.players.toString());
 
                 adapter.notifyDataSetChanged();
 
