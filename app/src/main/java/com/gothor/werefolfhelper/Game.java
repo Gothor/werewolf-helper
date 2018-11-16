@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Game {
@@ -95,19 +96,18 @@ public class Game {
             public int compare(Object po, Object pt1) {
                 Player o = (Player) po;
                 Player t1 = (Player) pt1;
-                if (o.role == Role.WEREWOLF) return -1;
-                if (t1.role == Role.WEREWOLF) return 1;
+
+                if (o.alive != t1.alive) {
+                    return o.alive ? -1 : 1;
+                }
+                if (o.role == t1.role) return o.name.compareTo(t1.name);
+                if (o.role.getOrder() < t1.role.getOrder()) return -1;
+                if (o.role.getOrder() > t1.role.getOrder()) return 1;
                 return 0;
             }
         };
 
-        for (int i = 0; i < players.size(); i++) {
-            for (int j = i; j > 1 && c.compare(players.get(j), players.get(j-1)) < 0; j--) {
-                Player tmp = players.get(i);
-                players.set(i, players.get(j));
-                players.set(j, tmp);
-            }
-        }
+        Collections.sort(players, c);
     }
 
     public Role[] getAvailableRoles() {
@@ -148,6 +148,13 @@ public class Game {
                 strs[i++] = r.toString().toLowerCase();
 
             return strs;
+        }
+
+        public int getOrder() {
+            if (this == WEREWOLF) return 0;
+            if (this == CLAIRVOYANT) return 1;
+            if (this == LITTLE_GIRL) return 2;
+            return 3;
         }
     }
 
