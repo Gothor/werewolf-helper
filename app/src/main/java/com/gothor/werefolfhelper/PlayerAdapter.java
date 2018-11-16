@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,25 +128,25 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
     public class PlayerViewHolderInGame extends PlayerViewHolder {
 
         private TextView tv_name;
-        private TextView tv_role;
+        private ImageView iv_role;
         private ImageView iv_status;
 
         public PlayerViewHolderInGame(final View layout) {
             super(layout);
 
             tv_name = layout.findViewById(R.id.playerNameTextView);
-            tv_role = layout.findViewById(R.id.playerRoleTextView);
+            iv_role = layout.findViewById(R.id.playerRoleTextView);
             iv_status = layout.findViewById(R.id.playerStatusTextView);
 
-            tv_role.setOnClickListener(new View.OnClickListener() {
+            iv_role.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Nouveau rôle ?")
-                            .setItems(Game.getGame(context).getAvailableRoles(), new DialogInterface.OnClickListener() {
+                            .setItems(Game.getGame(context).getAvailableRoleNames(), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    player.role = Game.Role.values()[i];
+                                    player.role = Game.getGame(context).getAvailableRoles()[i];
                                     notifyDataSetChanged();
                                 }
                             });
@@ -165,8 +166,11 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
 
         @Override
         public void onSetPlayer() {
+            String role = player.role.toString().toLowerCase();
+            int imgId = context.getResources().getIdentifier("role_" + role, "drawable", context.getPackageName());
+
             tv_name.setText(player.name);
-            tv_role.setText(player.role.toString().toLowerCase());
+            iv_role.setImageResource(imgId);
             iv_status.setImageResource(player.alive ? R.drawable.alive : R.drawable.dead);
         }
     }

@@ -110,17 +110,28 @@ public class Game {
         }
     }
 
-    public String[] getAvailableRoles() {
-        ArrayList<String> roles = new ArrayList<>();
+    public Role[] getAvailableRoles() {
+        ArrayList<Role> roles = new ArrayList<>();
 
-        roles.add(Role.WEREWOLF.toString());
-        if (clairvoyantEnabled) roles.add(Role.CLAIRVOYANT.toString());
-        if (littleGirlEnabled) roles.add(Role.LITTLE_GIRL.toString());
-        roles.add(Role.VILLAGER.toString());
+        roles.add(Role.WEREWOLF);
+        if (clairvoyantEnabled) roles.add(Role.CLAIRVOYANT);
+        if (littleGirlEnabled) roles.add(Role.LITTLE_GIRL);
+        roles.add(Role.VILLAGER);
 
-        String[] strRoles = new String[roles.size()];
-        roles.toArray(strRoles);
-        return strRoles;
+        Role[] rolesArray = new Role[roles.size()];
+        roles.toArray(rolesArray);
+
+        return rolesArray;
+    }
+
+    public String[] getAvailableRoleNames() {
+        Role[] roles = getAvailableRoles();
+        String[] roleNames = new String[roles.length];
+
+        for (int i = 0; i < roles.length; i++) {
+            roleNames[i] = roles[i].toString();
+        }
+        return roleNames;
     }
 
     public enum Role {
