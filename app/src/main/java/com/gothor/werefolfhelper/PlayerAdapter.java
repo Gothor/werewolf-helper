@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -85,12 +87,19 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
     public class PlayerViewHolderName extends PlayerViewHolder {
 
         private TextView tv_name;
+        private Button bt_edit;
+        private Button bt_remove;
 
         public PlayerViewHolderName(final View layout) {
             super(layout);
-            layout.setOnLongClickListener(new View.OnLongClickListener() {
+
+            bt_edit = layout.findViewById(R.id.bt_edit);
+            bt_remove = layout.findViewById(R.id.bt_remove);
+            tv_name = layout.findViewById(R.id.playerNameTextView);
+
+            bt_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View view) {
+                public void onClick(View view) {
                     final int position = getAdapterPosition();
                     Player player = players.get(position);
 
@@ -111,11 +120,45 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
                             });
                     Dialog dialog = builder.create();
                     dialog.show();
-
-                    return false;
                 }
             });
-            tv_name = layout.findViewById(R.id.playerNameTextView);
+
+            bt_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final int position = getAdapterPosition();
+                    final Player player = players.get(position);
+
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    View layout = inflater.inflate(R.layout.dialog_get_name, null);
+
+                    final EditText nameEditText = layout.findViewById(R.id.nameEditText);
+                    nameEditText.setText(player.name);
+
+                    InputFilter[] FilterArray = new InputFilter[1];
+                    FilterArray[0] = new InputFilter.LengthFilter(context.getResources().getInteger(R.integer.name_max_length));
+                    nameEditText.setFilters(FilterArray);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Renommer " + player.name)
+                            .setView(layout)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String name = nameEditText.getText().toString();
+                                    player.name = name;
+                                }
+                            })
+                            .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
         }
 
         @Override
