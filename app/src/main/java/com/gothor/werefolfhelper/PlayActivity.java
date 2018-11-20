@@ -1,5 +1,8 @@
 package com.gothor.werefolfhelper;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.annotation.Nullable;
@@ -60,7 +63,7 @@ public class PlayActivity extends AppCompatActivity {
                         }
                         break;
                     case CLAIRVOYANT:
-                        villageois();
+                        villager();
                         break;
                     case DAY:
                         werewolf();
@@ -81,17 +84,22 @@ public class PlayActivity extends AppCompatActivity {
         textView.setText(getString(R.string.clairvoyant_turn_description));
     }
 
-    public void villageois() {
+    public void villager() {
         game.step = Game.Step.DAY;
         textView.setText(getString(R.string.villagers_turn_description));
     }
 
     public void endGame(int result) {
-        // @TODO Afficher le message dans une AlertDialog puis retour à l'accueil
-        if (result == 1) {
-            textView.setText("Les loups-garous ont gagné.");
-        } else {
-            textView.setText("Les villageois ont gagné.");
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.end_game)
+                .setMessage(result == 1 ? R.string.werewolf_win : R.string.villagers_win)
+                .setPositiveButton(R.string.home, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                onBackPressed();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

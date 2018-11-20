@@ -36,6 +36,8 @@
         \n(Nommer la victime s\'il y en a une).
         \nLes villageois choisissent une victime.
         \nLes villageois se rendorment.</string>
+    <string name="werewolf_win">Les loups-garous ont gagné.</string>
+    <string name="villagers_win">Les villageois ont gagné.</string>
 
     <!--Roles descriptions-->
     <string name="role_villager">Villageois</string>
@@ -48,6 +50,8 @@
     <string name="example_name">Nom</string>
     <string name="example_status">Status</string>
     <string name="example_role">Rôle</string>
+    <string name="end_game">Fin du jeu</string>
+    <string name="home">Accueil</string>
 
 
 </resources>
