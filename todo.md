@@ -1,9 +1,9 @@
 # Critique
-- [ ] Implémenter la fin du jeu (TODO dans PlayActivity.java).
+- [x] Implémenter la fin du jeu (TODO dans PlayActivity.java).
 
 # Important
-- [ ] Ajouter la possibilité de modifier les noms des joueurs (qu'ils soient créés ou importés) ;
-- [ ] Compte-tenu de ce qui est demandé précédemment, peut-être faire un swip sur un nom pour pouvoir proposer soit la suppression, soit la modification ?
+- [x] Ajouter la possibilité de modifier les noms des joueurs (qu'ils soient créés ou importés) ;
+- [x] Compte-tenu de ce qui est demandé précédemment, peut-être faire un swip sur un nom pour pouvoir proposer soit la suppression, soit la modification ?
 - [x] Durant la partie, proposer les rôles en français (sauf si images, cf liste bonus ci-dessous).
 
 # Normal
