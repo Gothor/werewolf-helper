@@ -24,6 +24,8 @@
     <string name="werewolf_logo">Logo du loup-garou</string>
     <string name="clairvoyant_logo">Logo de la voyante</string>
     <string name="little_girl_logo">Logo de la petite fille</string>
+    <string name="edit_icon">Bouton édition</string>
+    <string name="remove_icon">Bouton retrait</string>
 
     <!--Game turns descriptions-->
     <string name="werewolves_turn_description">Le village s\'endort.

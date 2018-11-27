@@ -16,18 +16,22 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/bt_edit"
-        app:layout_constraintRight_toLeftOf="@id/bt_remove"/>
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/edit_player"
+        app:layout_constraintRight_toLeftOf="@id/bt_remove"
+        android:contentDescription="@string/edit_icon" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove"
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/bt_remove"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:background="@drawable/remove_player"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/remove_icon"/>
 
 </android.support.constraint.ConstraintLayout>

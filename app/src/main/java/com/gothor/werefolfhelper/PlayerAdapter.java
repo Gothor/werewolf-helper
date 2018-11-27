@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -87,8 +88,8 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
     public class PlayerViewHolderName extends PlayerViewHolder {
 
         private TextView tv_name;
-        private Button bt_edit;
-        private Button bt_remove;
+        private ImageButton bt_edit;
+        private ImageButton bt_remove;
 
         public PlayerViewHolderName(final View layout) {
             super(layout);

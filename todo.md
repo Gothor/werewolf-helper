@@ -12,7 +12,7 @@
 - [ ] L'ajout / suppression de joueur ne doit être définitive qu'une fois le bouton "Valider" appuyé ;
 - [x] Limiter le nom des joueurs à 12 caractères (sinon pb de visibilité dans la partie) ;
 - [ ] Nettoyer le code et traiter tous les warnings.
-- [ ] Remplacer Edit et Remove dans la liste des joueurs par des icônes
+- [x] Remplacer Edit et Remove dans la liste des joueurs par des icônes
 
 # Bonus
 - [x] Durant la partie, proposer des icônes pour les rôles et statut des joueurs.
