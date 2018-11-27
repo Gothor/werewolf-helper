@@ -11,9 +11,9 @@
 # Normal
 - [ ] L'ajout / suppression de joueur ne doit être définitive qu'une fois le bouton "Valider" appuyé ;
 - [x] Limiter le nom des joueurs à 12 caractères (sinon pb de visibilité dans la partie) ;
-- [ ] Durant la partie, ne proposer que les rôles qui ne sont pas déjà pris ;
 - [ ] Nettoyer le code et traiter tous les warnings.
 
 # Bonus
 - [x] Durant la partie, proposer des icônes pour les rôles et statut des joueurs.
+- [ ] Enregistrer la partie en cours si sortie de l'appli et proposer de la reprendre au démarrage
 
