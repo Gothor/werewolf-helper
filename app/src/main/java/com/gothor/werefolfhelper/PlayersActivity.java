@@ -27,6 +27,8 @@ public class PlayersActivity extends AppCompatActivity {
 
     private Game game;
 
+    ArrayList<Player> players = new ArrayList<>();
+
     PlayerAdapter adapter;
 
     private RecyclerView recyclerView;
@@ -42,6 +44,10 @@ public class PlayersActivity extends AppCompatActivity {
 
         game = Game.getGame(this);
 
+        for (Player p : game.players) {
+            players.add(new Player(p));
+        }
+
         recyclerView = (RecyclerView) findViewById(R.id.list_players);
         createButton = (Button) findViewById(R.id.bt_create);
         importButton = (Button) findViewById(R.id.bt_import);
@@ -49,7 +55,7 @@ public class PlayersActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new PlayerAdapter(this, game.players, PlayerAdapter.NAME_VIEW);
+        adapter = new PlayerAdapter(this, players, PlayerAdapter.NAME_VIEW);
         recyclerView.setAdapter(adapter);
 
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +95,7 @@ public class PlayersActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name = nameEditText.getText().toString();
-                        game.addPlayer(new Player(name));
+                        players.add(new Player(name));
                     }
                 })
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -126,6 +132,7 @@ public class PlayersActivity extends AppCompatActivity {
     }
 
     protected void onSubmitButtonClick() {
+        game.players = players;
         game.save();
         onBackPressed();
     }
@@ -136,7 +143,7 @@ public class PlayersActivity extends AppCompatActivity {
         switch (requestCode) {
             case 0: {
                 if (resultCode == Activity.RESULT_OK) {
-                    int originalSize = game.players.size();
+                    int originalSize = players.size();
                     ArrayList<String> contactNames = data.getStringArrayListExtra("contacts");
 
                     for (String name: contactNames) {
@@ -146,10 +153,10 @@ public class PlayersActivity extends AppCompatActivity {
                             name = name.substring(0, limit);
                             name = name.trim();
                         }
-                        game.addPlayer(new Player(name));
+                        players.add(new Player(name));
                     }
 
-                    adapter.notifyItemRangeInserted(originalSize, game.players.size() - originalSize);
+                    adapter.notifyItemRangeInserted(originalSize, players.size() - originalSize);
                 }
             }
         }

@@ -15,4 +15,9 @@ class Player {
         this.alive = true;
     }
 
+    public Player(Player p) {
+        this.name = p.name;
+        this.role = p.role;
+        this.alive = p.alive;
+    }
 }
