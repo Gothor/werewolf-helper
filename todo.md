@@ -7,6 +7,7 @@
 - [x] Durant la partie, proposer les rôles en français (sauf si images, cf liste bonus ci-dessous).
 - [ ] Proposer les rôles soit en français, soit en image
 - [x] Bloquer le basculement d'écran
+- [x] Quand la partie est terminéee, réinitialiser le jeu
 
 # Normal
 - [ ] L'ajout / suppression de joueur ne doit être définitive qu'une fois le bouton "Valider" appuyé ;

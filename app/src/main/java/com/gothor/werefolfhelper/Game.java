@@ -134,6 +134,13 @@ public class Game {
         return roleNames;
     }
 
+    public void reset() {
+        for (Player p : players) {
+            p.alive = true;
+            p.role = Game.Role.VILLAGER;
+        }
+    }
+
     public enum Role {
         WEREWOLF,
         CLAIRVOYANT,

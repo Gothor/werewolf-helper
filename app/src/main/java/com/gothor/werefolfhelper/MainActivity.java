@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                game.reset();
+
                 Intent intent = new Intent(MainActivity.this, PlayActivity.class);
                 startActivity(intent);
             }
