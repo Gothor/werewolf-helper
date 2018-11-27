@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
@@ -185,6 +186,10 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
             iv_role.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Intent intent = new Intent(context, RoleActivity.class);
+                    ((PlayActivity) context).startActivityForResult(intent, 0);
+                    ((PlayActivity) context).pwet = player;
+                    /*
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Nouveau rôle ?")
                             .setItems(Game.getGame(context).getAvailableRoleNames(), new DialogInterface.OnClickListener() {
@@ -196,6 +201,7 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
                             });
                     AlertDialog dialog = builder.create();
                     dialog.show();
+                    */
                 }
             });
 

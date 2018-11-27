@@ -1,5 +1,6 @@
 package com.gothor.werefolfhelper;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static com.gothor.werefolfhelper.Game.game;
 
@@ -25,6 +30,8 @@ public class PlayActivity extends AppCompatActivity {
     private TextView textView;
     private RecyclerView recyclerView;
     private Button button;
+
+    Player pwet;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,5 +108,18 @@ public class PlayActivity extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            String role = data.getStringExtra(RoleActivity.RESULT_CONTRYCODE);
+            List<Game.Role> roles = Arrays.asList(Game.Role.values());
+            for (Game.Role r : roles) {
+                if (role == r.toString().toLowerCase()) {
+                    player
+                }
+            }
+        }
     }
 }
