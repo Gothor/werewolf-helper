@@ -1,5 +1,6 @@
 package com.gothor.werefolfhelper;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,9 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.gothor.werefolfhelper.Game.game;
 
-public class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends PlayerAdapter.Listener {
 
     private Game game;
 
@@ -25,6 +29,7 @@ public class PlayActivity extends AppCompatActivity {
     private TextView textView;
     private RecyclerView recyclerView;
     private Button button;
+    private PlayerAdapter.PlayerViewHolder currentViewHolder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,5 +106,52 @@ public class PlayActivity extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            String id = data.getStringExtra(RoleActivity.RESULT_CONTRYCODE);
+            Log.d("WerewolfHelper", id);
+            Game.Role role = Game.Role.fromId(id);
+            Log.d("WerewolfHelper", role.toString());
+            currentViewHolder.player.role = role;
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onClickRemove(PlayerAdapter.PlayerViewHolder viewHolder) { }
+
+    @Override
+    public void onClickEdit(PlayerAdapter.PlayerViewHolder viewHolder) { }
+
+    @Override
+    public void onClickRole(final PlayerAdapter.PlayerViewHolder viewHolder) {
+        /*
+        // If you prefer writing role names instead of showing pictures, use this
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.select_role)
+                .setItems(Game.getGame(this).getAvailableRoleNames(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        viewHolder.player.role = Game.getGame(PlayActivity.this).getAvailableRoles()[i];
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        */
+
+        currentViewHolder = viewHolder;
+        Intent intent = new Intent(this, RoleActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void onClickStatus(PlayerAdapter.PlayerViewHolder viewHolder) {
+        viewHolder.player.alive = !viewHolder.player.alive;
+        adapter.notifyDataSetChanged();
     }
 }

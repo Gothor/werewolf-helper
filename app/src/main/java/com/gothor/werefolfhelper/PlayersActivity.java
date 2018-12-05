@@ -2,6 +2,7 @@ package com.gothor.werefolfhelper;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,7 +24,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class PlayersActivity extends AppCompatActivity {
+public class PlayersActivity extends PlayerAdapter.Listener {
 
     private Game game;
 
@@ -161,4 +162,70 @@ public class PlayersActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onClickRemove(PlayerAdapter.PlayerViewHolder viewHolder) {
+        final int position = viewHolder.getAdapterPosition();
+        Player player = players.get(position);
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("Retirer " + player.name + " de la partie ?")
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        players.remove(position);
+                        adapter.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        Dialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public void onClickEdit(PlayerAdapter.PlayerViewHolder viewHolder) {
+        final int position = viewHolder.getAdapterPosition();
+        final Player player = players.get(position);
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View layout = inflater.inflate(R.layout.dialog_get_name, null);
+
+        final EditText nameEditText = layout.findViewById(R.id.nameEditText);
+        nameEditText.setText(player.name);
+
+        InputFilter[] FilterArray = new InputFilter[1];
+        FilterArray[0] = new InputFilter.LengthFilter(this.getResources().getInteger(R.integer.name_max_length));
+        nameEditText.setFilters(FilterArray);
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("Renommer " + player.name)
+                .setView(layout)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String name = nameEditText.getText().toString();
+                        player.name = name;
+                        adapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        Dialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public void onClickRole(PlayerAdapter.PlayerViewHolder viewHolder) { }
+
+    @Override
+    public void onClickStatus(PlayerAdapter.PlayerViewHolder viewHolder) { }
 }

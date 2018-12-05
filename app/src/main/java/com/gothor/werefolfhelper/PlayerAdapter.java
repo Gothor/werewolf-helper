@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -18,17 +19,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder> {
 
     public static final int NAME_VIEW = 0;
     public static final int IN_GAME_VIEW = 1;
 
-    private Context context;
+    private Listener context;
     private ArrayList<Player> players;
     private int viewType;
 
-    public PlayerAdapter(Context context, ArrayList<Player> players, int viewType) {
+    public PlayerAdapter(Listener context, ArrayList<Player> players, int viewType) {
         this.context = context;
         this.players = players;
         this.viewType = viewType;
@@ -101,63 +103,14 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
             bt_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final int position = getAdapterPosition();
-                    Player player = players.get(position);
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Retirer " + player.name + " de la partie ?")
-                            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    players.remove(position);
-                                    notifyItemRemoved(position);
-                                }
-                            })
-                            .setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.cancel();
-                                }
-                            });
-                    Dialog dialog = builder.create();
-                    dialog.show();
+                    context.onClickRemove(PlayerViewHolderName.this);
                 }
             });
 
             bt_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final int position = getAdapterPosition();
-                    final Player player = players.get(position);
-
-                    LayoutInflater inflater = LayoutInflater.from(context);
-                    View layout = inflater.inflate(R.layout.dialog_get_name, null);
-
-                    final EditText nameEditText = layout.findViewById(R.id.nameEditText);
-                    nameEditText.setText(player.name);
-
-                    InputFilter[] FilterArray = new InputFilter[1];
-                    FilterArray[0] = new InputFilter.LengthFilter(context.getResources().getInteger(R.integer.name_max_length));
-                    nameEditText.setFilters(FilterArray);
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Renommer " + player.name)
-                            .setView(layout)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    String name = nameEditText.getText().toString();
-                                    player.name = name;
-                                }
-                            })
-                            .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.cancel();
-                                }
-                            });
-                    Dialog dialog = builder.create();
-                    dialog.show();
+                    context.onClickEdit(PlayerViewHolderName.this);
                 }
             });
         }
@@ -185,38 +138,31 @@ class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>
             iv_role.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Nouveau rôle ?")
-                            .setItems(Game.getGame(context).getAvailableRoleNames(), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    player.role = Game.getGame(context).getAvailableRoles()[i];
-                                    notifyDataSetChanged();
-                                }
-                            });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+                    context.onClickRole(PlayerViewHolderInGame.this);
                 }
             });
 
             iv_status.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    player.alive = !player.alive;
-                    notifyDataSetChanged();
+                    context.onClickStatus(PlayerViewHolderInGame.this);
                 }
             });
         }
 
         @Override
         public void onSetPlayer() {
-            String role = player.role.toString().toLowerCase();
-            int imgId = context.getResources().getIdentifier("role_" + role, "drawable", context.getPackageName());
-
             tv_name.setText(player.name);
-            iv_role.setImageResource(imgId);
+            iv_role.setImageResource(player.role.getPictureId(context));
             iv_status.setImageResource(player.alive ? R.drawable.alive : R.drawable.dead);
         }
+    }
+
+    abstract static class Listener extends AppCompatActivity {
+        abstract public void onClickRemove(PlayerViewHolder viewHolder);
+        abstract public void onClickEdit(PlayerViewHolder viewHolder);
+        abstract public void onClickRole(PlayerViewHolder viewHolder);
+        abstract public void onClickStatus(PlayerViewHolder viewHolder);
     }
 
 }

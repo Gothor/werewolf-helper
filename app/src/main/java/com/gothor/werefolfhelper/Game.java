@@ -2,6 +2,10 @@ package com.gothor.werefolfhelper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -129,7 +133,7 @@ public class Game {
         String[] roleNames = new String[roles.length];
 
         for (int i = 0; i < roles.length; i++) {
-            roleNames[i] = roles[i].toString();
+            roleNames[i] = roles[i].getLabel(context);
         }
         return roleNames;
     }
@@ -155,6 +159,31 @@ public class Game {
                 strs[i++] = r.toString().toLowerCase();
 
             return strs;
+        }
+
+        public static Role fromId(String id) {
+            for (Role r: Role.values())
+                if (r.getId().equals(id))
+                    return r;
+            return null;
+        }
+
+        public String getId() {
+            return "role_" + this.name().toLowerCase();
+        }
+
+        public String getLabel(Context ctx) {
+            Resources res = ctx.getResources();
+            int id = res.getIdentifier(this.getId(), "string", ctx.getPackageName());
+            if (id != 0) {
+                return ctx.getString(id);
+            }
+            return name();
+        }
+
+        public int getPictureId(Context ctx) {
+            Resources res = ctx.getResources();
+            return res.getIdentifier(this.getId(), "drawable", ctx.getPackageName());
         }
 
         public int getOrder() {
