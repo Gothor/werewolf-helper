@@ -142,10 +142,19 @@ public class Game {
     }
 
     public void reset() {
+        nbDays = 0;
         for (Player p : players) {
             p.alive = true;
             p.role = Game.Role.VILLAGER;
         }
+    }
+
+    public int countWerewolfPlayers() {
+        int count = 0;
+        for (Player p: players)
+            if (p.role == Role.WEREWOLF)
+                count++;
+        return count;
     }
 
     public enum Role {

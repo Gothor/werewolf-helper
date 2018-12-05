@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.annotation.Nullable;
@@ -55,37 +56,62 @@ public class PlayActivity extends PlayerAdapter.Listener {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int result = game.isOver();
-                game.sortPlayers();
-
-                adapter.notifyDataSetChanged();
-
-                switch (game.step) {
-                    case WEREWOLF:
-                        if (result == Game.NO_WIN)
-                            if (game.clairvoyantEnabled) {
-                                clairvoyant();
-                            } else {
-                                villager();
-                            }
-                        else {
-                            endGame(result);
-                        }
-                        break;
-                    case CLAIRVOYANT:
-                        villager();
-                        break;
-                    case DAY:
-                        werewolf();
-                        break;
-                }
+                nextTurn();
             }
         });
     }
 
+    private void nextTurn() {
+        final int result = game.isOver();
+        game.sortPlayers();
+
+        adapter.notifyDataSetChanged();
+
+        switch (game.step) {
+            case WEREWOLF:
+                if (game.nbDays == 1 && game.countWerewolfPlayers() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this);
+                    builder.setTitle(R.string.no_werewolf_selected)
+                            .setMessage(R.string.continue_question)
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if (result == Game.NO_WIN)
+                                        if (game.clairvoyantEnabled) {
+                                            clairvoyant();
+                                        } else {
+                                            villager();
+                                        }
+                                    else {
+                                        endGame(result);
+                                    }
+                                }
+                            });
+                    builder.show();
+                }
+                else if (result == Game.NO_WIN)
+                    if (game.clairvoyantEnabled) {
+                        clairvoyant();
+                    } else {
+                        villager();
+                    }
+                else {
+                    endGame(result);
+                }
+                break;
+            case CLAIRVOYANT:
+                villager();
+                break;
+            case DAY:
+                werewolf();
+                break;
+        }
+    }
+
     public void werewolf() {
-        game.step = Game.Step.WEREWOLF;
         game.nbDays++;
+        game.step = Game.Step.WEREWOLF;
         textView.setText(getString(R.string.werewolves_turn_description));
     }
 
