@@ -23,7 +23,7 @@ public class RoleActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        roleList = Arrays.asList(Role.values());
+        roleList = Arrays.asList(Game.getGame(this).getAvailableRoles());
         ArrayAdapter<Role> adapter = new RoleListArrayAdapter(this, roleList);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
