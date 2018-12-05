@@ -112,10 +112,8 @@ public class PlayActivity extends PlayerAdapter.Listener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-            String id = data.getStringExtra(RoleActivity.RESULT_CONTRYCODE);
-            Log.d("WerewolfHelper", id);
+            String id = data.getStringExtra(RoleActivity.RESULT_ROLE_ID);
             Game.Role role = Game.Role.fromId(id);
-            Log.d("WerewolfHelper", role.toString());
             currentViewHolder.player.role = role;
             adapter.notifyDataSetChanged();
         }

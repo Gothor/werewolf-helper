@@ -3,7 +3,6 @@ package com.gothor.werefolfhelper;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,8 +15,7 @@ import java.util.List;
 
 public class RoleActivity extends ListActivity {
 
-    public static String RESULT_CONTRYCODE = "countrycode";
-    private TypedArray imgs;
+    public static String RESULT_ROLE_ID = "roleid";
     private List<Role> roleList;
 
     @Override
@@ -31,7 +29,7 @@ public class RoleActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Role r = roleList.get(position);
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra(RESULT_CONTRYCODE, r.getId());
+                returnIntent.putExtra(RESULT_ROLE_ID, r.getId());
                 setResult(RESULT_OK, returnIntent);
                 finish();
             }
