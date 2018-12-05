@@ -18,6 +18,9 @@ import java.util.Comparator;
 
 public class Game {
 
+    public static final int NO_WIN = 0;
+    public static final int WEREWOLF_WIN = 1;
+    public static final int VILLAGER_WIN = 2;
     protected transient static Game game;
 
     private transient Context context;

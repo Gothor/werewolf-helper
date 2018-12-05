@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.gothor.werefolfhelper.Game.WEREWOLF_WIN;
 import static com.gothor.werefolfhelper.Game.game;
 
 public class PlayActivity extends PlayerAdapter.Listener {
@@ -61,7 +62,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
 
                 switch (game.step) {
                     case WEREWOLF:
-                        if (result == 0)
+                        if (result == Game.NO_WIN)
                             clairvoyant();
                         else {
                             endGame(result);
@@ -97,7 +98,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
     public void endGame(int result) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.end_game)
-                .setMessage(result == 1 ? R.string.werewolf_win : R.string.villagers_win)
+                .setMessage(result == WEREWOLF_WIN ? R.string.werewolf_win : R.string.villagers_win)
                 .setPositiveButton(R.string.home, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
