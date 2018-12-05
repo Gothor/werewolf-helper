@@ -63,7 +63,11 @@ public class PlayActivity extends PlayerAdapter.Listener {
                 switch (game.step) {
                     case WEREWOLF:
                         if (result == Game.NO_WIN)
-                            clairvoyant();
+                            if (game.clairvoyantEnabled) {
+                                clairvoyant();
+                            } else {
+                                villager();
+                            }
                         else {
                             endGame(result);
                         }
