@@ -29,12 +29,12 @@
 
     <!--Game turns descriptions-->
     <string name="werewolves_turn_description">Le village s\'endort.
-        \nLes loups-garous se réveillent
+        \nLes loups-garous se réveillent.
         \n(Ils désignent leur victime).
-        \nLes loups-garoux se rendorment</string>
+        \nLes loups-garoux se rendorment.</string>
     <string name="clairvoyant_turn_description">La voyante se réveille.
         \nLa voyante se rendort.</string>
-    <string name="villagers_turn_description">Le village se réveille
+    <string name="villagers_turn_description">Le village se réveille.
         \n(Nommer la victime s\'il y en a une).
         \nLes villageois choisissent une victime.
         \nLes villageois se rendorment.</string>
