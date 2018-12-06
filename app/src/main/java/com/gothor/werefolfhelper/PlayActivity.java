@@ -139,6 +139,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
     }
 
     public void endGame(int result) {
+        game.save();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.end_game)
                 .setMessage(result == WEREWOLF_WIN ? R.string.werewolf_win : R.string.villagers_win)
@@ -159,6 +160,12 @@ public class PlayActivity extends PlayerAdapter.Listener {
             currentViewHolder.player.role = Game.Role.fromId(id);
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.save();
     }
 
     @Override
