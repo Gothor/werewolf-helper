@@ -4,23 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Debug;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static com.gothor.werefolfhelper.Game.WEREWOLF_WIN;
-import static com.gothor.werefolfhelper.Game.game;
 
 public class PlayActivity extends PlayerAdapter.Listener {
 
@@ -69,9 +61,9 @@ public class PlayActivity extends PlayerAdapter.Listener {
 
         switch (game.step) {
             case WEREWOLF:
-                if (game.nbDays == 1 && game.countRole(Game.Role.WEREWOLF) == 0) {
+                if (game.nbDays == 1 && game.countRole(Game.Role.WEREWOLF) != game.nbWerewolves) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this);
-                    builder.setTitle(R.string.no_werewolf_selected)
+                    builder.setTitle(game.countRole(Game.Role.WEREWOLF) < game.nbWerewolves ? R.string.not_enough_werewolves : R.string.too_many_werewolves)
                             .setMessage(R.string.continue_question)
                             .setNegativeButton(android.R.string.no, null)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
