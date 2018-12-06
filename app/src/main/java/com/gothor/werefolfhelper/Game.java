@@ -149,12 +149,20 @@ public class Game {
         }
     }
 
-    public int countWerewolfPlayers() {
+    public int countRole(Role role) {
         int count = 0;
         for (Player p: players)
-            if (p.role == Role.WEREWOLF)
+            if (p.role == role)
                 count++;
         return count;
+    }
+
+    public boolean clairvoyantIsAlive() {
+        for (Player p: players) {
+            if (p.role == Role.CLAIRVOYANT && p.alive)
+                return true;
+        }
+        return false;
     }
 
     public enum Role {

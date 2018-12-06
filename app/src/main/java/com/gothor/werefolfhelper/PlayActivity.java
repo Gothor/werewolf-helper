@@ -69,7 +69,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
 
         switch (game.step) {
             case WEREWOLF:
-                if (game.nbDays == 1 && game.countWerewolfPlayers() == 0) {
+                if (game.nbDays == 1 && game.countRole(Game.Role.WEREWOLF) == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this);
                     builder.setTitle(R.string.no_werewolf_selected)
                             .setMessage(R.string.continue_question)
@@ -91,7 +91,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
                     builder.show();
                 }
                 else if (result == Game.NO_WIN)
-                    if (game.clairvoyantEnabled) {
+                    if (game.clairvoyantEnabled && (game.nbDays == 1 || game.clairvoyantIsAlive())) {
                         clairvoyant();
                     } else {
                         villager();
@@ -101,7 +101,21 @@ public class PlayActivity extends PlayerAdapter.Listener {
                 }
                 break;
             case CLAIRVOYANT:
-                villager();
+                if (game.nbDays == 1 && game.countRole(Game.Role.CLAIRVOYANT) == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PlayActivity.this);
+                    builder.setTitle(R.string.no_clairvoyant_selected)
+                            .setMessage(R.string.continue_question)
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    villager();
+                                }
+                            });
+                    builder.show();
+                } else {
+                    villager();
+                }
                 break;
             case DAY:
                 werewolf();
