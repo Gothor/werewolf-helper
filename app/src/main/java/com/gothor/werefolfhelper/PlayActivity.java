@@ -43,7 +43,11 @@ public class PlayActivity extends PlayerAdapter.Listener {
         adapter = new PlayerAdapter(this, game.players, PlayerAdapter.IN_GAME_VIEW);
         recyclerView.setAdapter(adapter);
 
-        werewolf();
+        switch(game.step) {
+            case WEREWOLF: werewolf(); break;
+            case CLAIRVOYANT: clairvoyant(); break;
+            case DAY: villager(); break;
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,13 +114,13 @@ public class PlayActivity extends PlayerAdapter.Listener {
                 }
                 break;
             case DAY:
+                game.nbDays++;
                 werewolf();
                 break;
         }
     }
 
     public void werewolf() {
-        game.nbDays++;
         game.step = Game.Step.WEREWOLF;
         textView.setText(getString(R.string.werewolves_turn_description));
     }

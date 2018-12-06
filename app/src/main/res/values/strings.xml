@@ -59,6 +59,10 @@
     <string name="too_many_werewolves">Vous avez sélectionné plus de loups-garous que prévu.</string>
     <string name="no_clairvoyant_selected">Vous n\'avez sélectionné aucune voyante.</string>
     <string name="continue_question">Êtes-vous sûr de vouloir continuer ?</string>
+    <string name="ongoing_game">Vous avez déjà une partie en cours.</string>
+    <string name="keep_going_question">Voulez-vous la reprendre ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
 
 
 </resources>

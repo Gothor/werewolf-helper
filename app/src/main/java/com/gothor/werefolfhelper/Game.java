@@ -31,6 +31,7 @@ public class Game {
     public boolean clairvoyantEnabled;
     public boolean littleGirlEnabled;
     public Step step = Step.WEREWOLF;
+    public boolean over = false;
 
     public ArrayList<Player> players = new ArrayList<>();
 
@@ -75,9 +76,16 @@ public class Game {
     }
 
     public int isOver() {
-        if (werewolfWin()) return 1;
-        if (villagerWin()) return 2;
-        return 0;
+        int res = 0;
+        if (werewolfWin()) {
+            over = true;
+            res = 1;
+        };
+        if (villagerWin()) {
+            over = true;
+            res = 2;
+        }
+        return res;
     }
 
     private boolean werewolfWin() {
@@ -142,11 +150,13 @@ public class Game {
     }
 
     public void reset() {
-        nbDays = 0;
+        nbDays = 1;
+        game.step = Step.WEREWOLF;
         for (Player p : players) {
             p.alive = true;
             p.role = Game.Role.VILLAGER;
         }
+        over = false;
     }
 
     public int countRole(Role role) {

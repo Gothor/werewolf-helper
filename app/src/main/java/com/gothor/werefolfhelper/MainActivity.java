@@ -1,7 +1,9 @@
 package com.gothor.werefolfhelper;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 /* A FAIRE : tester si nb cartes et nb joueurs sont compatibles
                 avant de lancer le jeu */
-                Game game = Game.getGame(MainActivity.this);
+                final Game game = Game.getGame(MainActivity.this);
 
                 if (game.players.size() < 8) {
                     Toast.makeText(MainActivity.this, "Il faut au moins 8 joueurs.", Toast.LENGTH_LONG).show();
@@ -56,10 +58,31 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                game.reset();
+                final Intent intent = new Intent(MainActivity.this, PlayActivity.class);
 
-                Intent intent = new Intent(MainActivity.this, PlayActivity.class);
-                startActivity(intent);
+                if (!game.over) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle(R.string.ongoing_game)
+                            .setMessage(R.string.keep_going_question)
+                            .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    game.reset();
+                                    startActivity(intent);
+                                }
+                            })
+                            .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    startActivity(intent);
+                                }
+                            });
+                    builder.show();
+                } else {
+                    game.reset();
+                    startActivity(intent);
+                }
+
             }
         });
     }
