@@ -75,7 +75,7 @@ public class Game {
         e.commit();
     }
 
-    public int isOver() {
+    public int getState() {
         int res = 0;
         if (werewolfWin()) {
             over = true;

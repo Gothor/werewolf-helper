@@ -58,7 +58,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
     }
 
     private void nextTurn() {
-        final int result = game.isOver();
+        final int state = game.getState();
         game.sortPlayers();
 
         adapter.notifyDataSetChanged();
@@ -73,27 +73,27 @@ public class PlayActivity extends PlayerAdapter.Listener {
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    if (result == Game.NO_WIN)
+                                    if (state == Game.NO_WIN)
                                         if (game.clairvoyantEnabled) {
                                             clairvoyant();
                                         } else {
                                             villager();
                                         }
                                     else {
-                                        endGame(result);
+                                        endGame(state);
                                     }
                                 }
                             });
                     builder.show();
                 }
-                else if (result == Game.NO_WIN)
+                else if (state == Game.NO_WIN)
                     if (game.clairvoyantEnabled && (game.nbDays == 1 || game.clairvoyantIsAlive())) {
                         clairvoyant();
                     } else {
                         villager();
                     }
                 else {
-                    endGame(result);
+                    endGame(state);
                 }
                 break;
             case CLAIRVOYANT:
@@ -114,8 +114,13 @@ public class PlayActivity extends PlayerAdapter.Listener {
                 }
                 break;
             case DAY:
-                game.nbDays++;
-                werewolf();
+                if (state == Game.NO_WIN) {
+                    game.nbDays++;
+                    werewolf();
+                }
+                else {
+                    endGame(state);
+                }
                 break;
         }
     }
