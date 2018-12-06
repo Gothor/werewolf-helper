@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    tools:ignore="SpUsage" >
+    tools:ignore="SpUsage">
 
     <!-- @TODO Implétementer images
     <ImageView
@@ -36,10 +36,10 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="10dp"
-        app:srcCompat="@drawable/role_villager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/playerStatusTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/role_villager" />
 
     <ImageView
         android:id="@+id/playerStatusTextView"
@@ -48,10 +48,10 @@
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        app:srcCompat="@drawable/alive"
+        android:contentDescription="Player's status"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Player's status"/>
+        app:srcCompat="@drawable/alive" />
 
 </android.support.constraint.ConstraintLayout>

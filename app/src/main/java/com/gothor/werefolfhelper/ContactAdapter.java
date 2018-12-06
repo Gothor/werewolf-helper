@@ -1,10 +1,10 @@
 package com.gothor.werefolfhelper;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -18,20 +18,20 @@ class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHold
 
     public ContactAdapter(ArrayList<String> contacts) {
         this.contacts = contacts;
-        for (String contact: contacts) {
+        for (String contact : contacts) {
             selected.add(false);
         }
     }
 
+    @NonNull
     @Override
-    public ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_contact, parent, false);
-        ContactViewHolder viewHolder = new ContactViewHolder(layout);
-        return viewHolder;
+        return new ContactViewHolder(layout);
     }
 
     @Override
-    public void onBindViewHolder(ContactViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         holder.setName(this.contacts.get(position));
         holder.setSelected(this.selected.get(position));
     }

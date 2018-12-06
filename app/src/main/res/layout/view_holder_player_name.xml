@@ -17,21 +17,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/bt_edit"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:id="@+id/bt_edit"
-        android:layout_marginRight="5dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/edit_player"
-        app:layout_constraintRight_toLeftOf="@id/bt_remove"
-        android:contentDescription="@string/edit_icon" />
+        android:contentDescription="@string/edit_icon"
+        app:layout_constraintRight_toLeftOf="@id/bt_remove" />
 
     <ImageButton
+        android:id="@+id/bt_remove"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:id="@+id/bt_remove"
         android:background="@drawable/remove_player"
-        app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="@string/remove_icon"/>
+        android:contentDescription="@string/remove_icon"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,17 +3,14 @@ package com.gothor.werefolfhelper;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
@@ -32,11 +29,6 @@ public class PlayersActivity extends PlayerAdapter.Listener {
 
     PlayerAdapter adapter;
 
-    private RecyclerView recyclerView;
-    private Button createButton;
-    private Button importButton;
-    private Button submitButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +41,10 @@ public class PlayersActivity extends PlayerAdapter.Listener {
             players.add(new Player(p));
         }
 
-        recyclerView = (RecyclerView) findViewById(R.id.list_players);
-        createButton = (Button) findViewById(R.id.bt_create);
-        importButton = (Button) findViewById(R.id.bt_import);
-        submitButton = (Button) findViewById(R.id.bt_start);
+        RecyclerView recyclerView = findViewById(R.id.list_players);
+        Button createButton = findViewById(R.id.bt_create);
+        Button importButton = findViewById(R.id.bt_import);
+        Button submitButton = findViewById(R.id.bt_start);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -208,8 +200,7 @@ public class PlayersActivity extends PlayerAdapter.Listener {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String name = nameEditText.getText().toString();
-                        player.name = name;
+                        player.name = nameEditText.getText().toString();
                         adapter.notifyDataSetChanged();
                     }
                 })

@@ -2,7 +2,6 @@ package com.gothor.werefolfhelper;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;

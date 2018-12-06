@@ -3,14 +3,8 @@ package com.gothor.werefolfhelper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
 
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -76,14 +70,14 @@ public class Game {
     }
 
     public int getState() {
-        int res = 0;
+        int res = NO_WIN;
         if (werewolfWin()) {
             over = true;
-            res = 1;
+            res = WEREWOLF_WIN;
         };
         if (villagerWin()) {
             over = true;
-            res = 2;
+            res = VILLAGER_WIN;
         }
         return res;
     }

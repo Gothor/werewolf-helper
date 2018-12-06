@@ -1,8 +1,5 @@
 package com.gothor.werefolfhelper;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 class Player {
 
     String name;

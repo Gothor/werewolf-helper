@@ -46,7 +46,7 @@
     <string name="role_werewolf">Loup-garou</string>
     <string name="role_clairvoyant">Voyante</string>
     <string name="role_little_girl">Petite fille</string>
-
+²
     <!--Text examples in layout files-->
     <string name="example_number">2</string>
     <string name="example_name">Nom</string>

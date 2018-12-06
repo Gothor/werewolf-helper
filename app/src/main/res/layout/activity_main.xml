@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/werewolf_logo"
+        app:layout_constraintBottom_toTopOf="@+id/app_name_first_part"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/app_name_first_part"
-        app:srcCompat="@drawable/werewolf"
-        android:contentDescription="@string/werewolf_logo" />
+        app:srcCompat="@drawable/werewolf" />
 
     <TextView
         android:id="@+id/app_name_first_part"

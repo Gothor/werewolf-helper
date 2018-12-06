@@ -13,10 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class ContactListActivity extends AppCompatActivity {
 
@@ -64,7 +62,7 @@ public class ContactListActivity extends AppCompatActivity {
                 contacts.add(name);
             }
         }
-        if(cur != null){
+        if (cur != null) {
             cur.close();
         }
 

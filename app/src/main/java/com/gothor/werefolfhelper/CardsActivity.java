@@ -13,15 +13,10 @@ public class CardsActivity extends AppCompatActivity {
     private Game game;
 
     private int nbWerewolves;
-    private boolean clairvoyantEnabled;
-    private boolean littleGirlEnabled;
 
     private TextView werewolvesNumberText;
-    private Button werewolvesMinusButton;
-    private Button werewolvesPlusButton;
     private CheckBox clairvoyantCheckbox;
     private CheckBox littleGirlCheckbox;
-    private Button submitButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,17 +27,17 @@ public class CardsActivity extends AppCompatActivity {
         game = Game.getGame(this);
 
         nbWerewolves = game.nbWerewolves;
-        clairvoyantEnabled = game.clairvoyantEnabled;
-        littleGirlEnabled = game.littleGirlEnabled;
+        boolean clairvoyantEnabled = game.clairvoyantEnabled;
+        boolean littleGirlEnabled = game.littleGirlEnabled;
 
         werewolvesNumberText = findViewById(R.id.werewolves_nb);
-        werewolvesMinusButton = findViewById(R.id.werewolves_minus);
-        werewolvesPlusButton = findViewById(R.id.werewolves_plus);
+        Button werewolvesMinusButton = findViewById(R.id.werewolves_minus);
+        Button werewolvesPlusButton = findViewById(R.id.werewolves_plus);
         clairvoyantCheckbox = findViewById(R.id.clairvoyant_enabled);
         littleGirlCheckbox = findViewById(R.id.little_girl_enabled);
-        submitButton = findViewById(R.id.bt_submit);
+        Button submitButton = findViewById(R.id.bt_submit);
 
-        werewolvesNumberText.setText(nbWerewolves + "");
+        werewolvesNumberText.setText(String.valueOf(nbWerewolves));
         clairvoyantCheckbox.setChecked(clairvoyantEnabled);
         littleGirlCheckbox.setChecked(littleGirlEnabled);
 
@@ -71,14 +66,14 @@ public class CardsActivity extends AppCompatActivity {
     private void onWerewolvesMinusButtonClick() {
         if (nbWerewolves > 2) {
             nbWerewolves--;
-            werewolvesNumberText.setText(nbWerewolves + "");
+            werewolvesNumberText.setText(String.valueOf(nbWerewolves));
         }
     }
 
     private void onWerewolvesPlusButtonClick() {
         if (nbWerewolves < 4) {
             nbWerewolves++;
-            werewolvesNumberText.setText(nbWerewolves + "");
+            werewolvesNumberText.setText(String.valueOf(nbWerewolves));
         }
     }
 

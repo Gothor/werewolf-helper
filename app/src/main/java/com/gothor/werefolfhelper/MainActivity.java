@@ -2,12 +2,10 @@ package com.gothor.werefolfhelper;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
         /*ConstraintLayout layout = (ConstraintLayout) ConstraintLayout.inflate(this, R.layout.activity_main, null);*/
 
-        bt_cards = (Button) findViewById(R.id.bt_cards);
-        bt_players = (Button) findViewById(R.id.bt_players);
-        bt_play = (Button) findViewById(R.id.bt_play);
+        bt_cards = findViewById(R.id.bt_cards);
+        bt_players = findViewById(R.id.bt_players);
+        bt_play = findViewById(R.id.bt_play);
 
         bt_cards.setOnClickListener(new View.OnClickListener() {
             @Override

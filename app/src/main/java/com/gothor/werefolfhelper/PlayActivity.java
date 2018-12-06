@@ -21,8 +21,6 @@ public class PlayActivity extends PlayerAdapter.Listener {
     PlayerAdapter adapter;
 
     private TextView textView;
-    private RecyclerView recyclerView;
-    private Button button;
     private PlayerAdapter.PlayerViewHolder currentViewHolder;
 
     @Override
@@ -34,9 +32,9 @@ public class PlayActivity extends PlayerAdapter.Listener {
         game = Game.getGame(this);
         game.sortPlayers();
 
-        textView = (TextView) findViewById(R.id.turn_description);
-        recyclerView = (RecyclerView) findViewById(R.id.list_players);
-        button = (Button) findViewById(R.id.bt_next_turn);
+        textView = findViewById(R.id.turn_description);
+        RecyclerView recyclerView = findViewById(R.id.list_players);
+        Button button = findViewById(R.id.bt_next_turn);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -158,8 +156,7 @@ public class PlayActivity extends PlayerAdapter.Listener {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
             String id = data.getStringExtra(RoleActivity.RESULT_ROLE_ID);
-            Game.Role role = Game.Role.fromId(id);
-            currentViewHolder.player.role = role;
+            currentViewHolder.player.role = Game.Role.fromId(id);
             adapter.notifyDataSetChanged();
         }
     }
